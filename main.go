@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"os/signal"
-	"syscall"
 
 	"drixevel.dev/bonk-bot/bot"
 	"drixevel.dev/bonk-bot/config"
@@ -21,7 +21,8 @@ func main() {
 	bot.Start()
 	fmt.Println("Bot is now running.  Press CTRL-C to exit.")
 
-	sc := make(chan os.Signal, 1)
-	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
-	<-sc
+	stop := make(chan os.Signal, 1)
+	signal.Notify(stop, os.Interrupt)
+	<-stop
+	log.Println("Graceful shutdown")
 }
