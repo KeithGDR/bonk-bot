@@ -7,15 +7,23 @@ import (
 )
 
 var (
-	Token     string //To store value of Token from config.json .
-	BotPrefix string // To store value of BotPrefix from config.json.
+	Token        string //To store value of Token from config.json .
+	BotPrefix    string // To store value of BotPrefix from config.json.
+	IP           string // To store value of BotPrefix from config.json.
+	Password     string // To store value of BotPrefix from config.json.
+	AdminChannel string // To store value of BotPrefix from config.json.
+	DNS          string // To store value of BotPrefix from config.json.
 
 	config *configStruct //To store value extracted from config.json.
 )
 
 type configStruct struct {
-	Token     string `json : "Token"`
-	BotPrefix string `json : "BotPrefix"`
+	Token        string `json : "Token"`
+	BotPrefix    string `json : "BotPrefix"`
+	IP           string `json : "IP"`
+	Password     string `json : "Password"`
+	AdminChannel string `json : "AdminChannel"`
+	DNS          string `json : "DNS"`
 }
 
 func ReadConfig() error {
@@ -36,6 +44,10 @@ func ReadConfig() error {
 
 	Token = config.Token
 	BotPrefix = config.BotPrefix
+	IP = config.IP
+	Password = config.Password
+	AdminChannel = config.AdminChannel
+	DNS = config.DNS
 
 	return nil
 }
