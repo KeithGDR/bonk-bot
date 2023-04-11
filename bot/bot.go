@@ -73,6 +73,7 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 		helpMsg = "!help - Shows this message.\n"
 		helpMsg += "!ping - pong\n"
 		helpMsg += "!pong - ping\n"
+		helpMsg += "!bonk - Bonk someone.\n"
 		helpMsg += "!quote - Shows a random Scout quote.\n"
 		helpMsg += "!connect/!join - Shows a link to connect to the server.\n"
 		helpMsg += "!rcon - Allows you to send commands to the server. (Admin Only)\n"
@@ -82,6 +83,8 @@ func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 		_, _ = s.ChannelMessageSend(m.ChannelID, "pong")
 	} else if m.Content == "pong" {
 		_, _ = s.ChannelMessageSend(m.ChannelID, "ping")
+	} else if m.Content == "bonk" {
+		_, _ = s.ChannelMessageSend(m.ChannelID, "BONK!")
 	} else if m.Content == "quote" {
 		//Opens the quotes.txt file and reads it.
 		//Each line contains a specific quote to show.
